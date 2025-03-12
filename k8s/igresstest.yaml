@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+        name: ingresstest-deployment
+spec:
+        replicas: 3
+        selector:
+                matchLabels:
+                        app: ingresstest
+        template:
+                metadata:
+                        labels:
+                                app: ingresstest
+                spec:
+                        containers:
+                                - name: ingresstest
+                                  image: krmp-d2hub-idock.9rum.cc/dev-test/repo_5e13ebea6566
+                                  imagePullPolicy: Always
+                                  ports:
+                                          - containerPort: 3000
